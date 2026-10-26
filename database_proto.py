@@ -195,25 +195,25 @@ def show_db_changes(conn: sqlite3.Connection, table: str) -> None:
     for row in cursor.fetchall():
         print(row)
 
-conn = get_connection()
-(products_df, sales_df) = data_cleaning_proto.load_raw_data(PRODUCTS_CSV, SALES_CSV)
-products_df = data_cleaning_proto.clean_products(products_df)
+#conn = get_connection()
+#(products_df, sales_df) = data_cleaning_proto.load_raw_data(PRODUCTS_CSV, SALES_CSV)
+#products_df = data_cleaning_proto.clean_products(products_df)
 
-valid_product_ids = products_df["product_id"].astype(str).str.strip().tolist()
-sales_df = data_cleaning_proto.clean_sales(sales_df, valid_product_ids)
+#valid_product_ids = products_df["product_id"].astype(str).str.strip().tolist()
+#sales_df = data_cleaning_proto.clean_sales(sales_df, valid_product_ids)
 
-create_tables(conn)
+#create_tables(conn)
 
-print("[+] INSERTING PRODUCTS")
-insert_products(conn, products_df)
-show_db_changes(conn, "products")
+#print("[+] INSERTING PRODUCTS")
+#insert_products(conn, products_df)
+#show_db_changes(conn, "products")
 
-print("[+] INSERTING SALES")
-insert_sales(conn, sales_df)
-show_db_changes(conn, "sales")
+#print("[+] INSERTING SALES")
+#insert_sales(conn, sales_df)
+#show_db_changes(conn, "sales")
 
-print(query_total_revenue_per_product(conn))
-print(query_best_selling_product(conn))
-print(query_sales_by_payment_method(conn))
-print(query_custom_one(conn))
-print(query_custom_two(conn))
+#print(query_total_revenue_per_product(conn))
+#print(query_best_selling_product(conn))
+#print(query_sales_by_payment_method(conn))
+#print(query_custom_one(conn))
+#print(query_custom_two(conn))

@@ -31,8 +31,5 @@ def login_gate(stored_hash: str, max_attempts: int = 3) -> bool:
     return False
 
 
-
-password = getpass.getpass("[sudo] password for root: ")
-hash = hash_password(password)
-print(hash)
-login_gate(hash, 3)
+STORED_PASSWORD_STR = "admin1"
+STORED_PASSWORD_HASH = hash_password(STORED_PASSWORD_STR)
