@@ -1,25 +1,20 @@
 # Thabo's Corner Store — Sales Insights System (Starter Code)
 
-This is your starting scaffold. It already contains the **shape** of the
-project — file structure, function signatures, imports and docstrings —
-so you can focus on the actual data, database and programming logic
-described in the Project Brief.
-
 ## Folder structure
 
 ```
 starter_code/
-├── README.md              <- this file
-├── requirements.txt        <- Python packages you need
-├── main.py                 <- entry point; runs your whole pipeline
-├── data_cleaning.py         <- Task 2: load & clean the raw CSVs
-├── database.py              <- Task 3: build the SQLite database + SQL queries
-├── analysis.py               <- Task 4: functions/loops/conditionals for insights
-├── visualize.py               <- Task 5: charts with matplotlib
-└── security.py                 <- Task 6: simple login / password hashing
+├── README.md              <- This file
+├── requirements.txt       <- Python packages you need
+├── main.py                <- entry point; runs the entire pipeline.
+├── data_cleaning.py       <- Task 2: load & clean the raw CSVs
+├── database.py            <- Task 3: build the SQLite database + SQL queries
+├── analysis.py            <- Task 4: functions/loops/conditionals for insights
+├── visualize.py           <- Task 5: charts with matplotlib
+└── security.py            <- Task 6: simple login / password hashing
 ```
 
-## Before you start
+## Setting up the project
 
 1. Make sure Python 3.10+ is installed: `python3 --version`
 2. Create a virtual environment (recommended):
@@ -42,37 +37,41 @@ starter_code/
        └── ... (these files)
    ```
 
-## Running your program
+## Running the proejct
 
-Once you've completed the TODOs in each file:
+Once Python is set up and all dependencies are installed:
 
 ```bash
 python main.py
 ```
+### Findings
 
-## A note on the TODOs
+## data_cleaning.py
+# Missing unit_price
+A sale record without a price severely limits any calculation that is to be performed based on selling prices in the data set(totals, fees, profit / loss...) thus, remove all records with a missing unit_price.
 
-Every function you need to complete has:
-- A docstring explaining **what** it must do
-- A `# TODO:` comment explaining **the specific steps**
-- `raise NotImplementedError` as a placeholder — delete this once you've
-  written your own code
+# Missing product_name
+Drop rows with missing a missing product_name, this is not usable data.
 
-Do not change the function names or the arguments they accept —
-`main.py` calls them by name, and your facilitator's marking checklist
-also references these exact names.
-
-Good luck — and remember to commit your progress to GitHub regularly
-as you complete each task, not just once at the end!
-
-## Findings
-
-# Missing Values
-
-# Inconsistent Categories
+# Inconsistent category capitalization
+Capitalize every row's category starting letter.
 
 # Inconsistent Date Formats
+Standardize them to a single format (YYYY-MM-DD)
 
-# Invalid Product References
+#Duplicate rows
+Drop them.
 
-# Duplicate Rows
+# Data cleaning summary
+products: 16 raw rows -> 12 clean rows (4 removed)
+sales: 71 raw rows -> 43 clean rows (28 removed)
+
+## security.py
+
+#Refleciton
+
+1. Confidentiality - The login gate helps keep sales reports from being viewed by unauthorized users. It checks a password before granting access, and storing a hash instead of the plain-text password avoids keeping the original password directly in the code. This is a basic protection, not a guarantee against every kind of access.
+
+2. Integrity - The login gate does not prevent data from being changed or corrupted. In database.py, primary keys help ensure each record has a unique identifier, while suitable data types help prevent invalid values.
+
+3. Availability - If the laptop is lost, damaged, stolen, or its files are accidentally deleted, the project and its reports may become unavailable. Regular backups stored somewhere separate from the laptop, such as an external drive or a cloud backup can reduce that risk.

@@ -1,19 +1,3 @@
-"""
-main.py
---------
-This is the entry point for your project. It ties together every
-module you complete: data_cleaning -> database -> analysis ->
-visualize -> security.
-
-You should NOT need to add much code to this file — it is already
-wired up to call your functions in the right order. Your job is to
-complete the TODOs in the other five files so that this runs end to
-end without errors.
-
-Run with:
-    python main.py
-"""
-
 import os
 import pandas as pd
 
@@ -23,11 +7,11 @@ import analysis
 import visualize
 import security
 
-DATA_DIR = os.path.join("..", "data")   # adjust if your folder layout differs
-PRODUCTS_CSV = os.path.join(DATA_DIR, "products.csv")
-SALES_CSV = os.path.join(DATA_DIR, "sales.csv")
-DB_PATH = "store.db"
+DATA_DIR = "../data/"
 
+PRODUCTS_CSV = DATA_DIR + "products.csv"
+SALES_CSV = DATA_DIR + "sales.csv"
+DB_PATH = DATA_DIR + "store.db"
 
 def main():
     print("=" * 60)
@@ -35,12 +19,8 @@ def main():
     print("=" * 60)
 
     # ---- Task 6: security gate -------------------------------------
-    # TODO: once you've set security.STORED_PASSWORD_HASH to a real
-    # hash (e.g. security.hash_password("letmein")), uncomment this
-    # block so reports require a password before they are shown.
-    #
-    # if not security.login_gate(security.STORED_PASSWORD_HASH):
-    #     return
+    if not security.login_gate(security.STORED_PASSWORD_HASH):
+        return
 
     # ---- Task 2: load & clean data ----------------------------------
     print("\n[1/5] Loading raw data...")
@@ -90,3 +70,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
