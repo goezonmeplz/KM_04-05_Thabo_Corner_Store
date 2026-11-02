@@ -128,15 +128,3 @@ def cleaning_summary(raw_df: "pd.DataFrame", clean_df: "pd.DataFrame", name: str
 
     return f"{name}: {raw_count} raw rows -> {clean_count} clean rows ({removed} removed)"
 
-    
-ROOT_DIR = "../data/"
-PRODUCTS = ROOT_DIR + "products.csv"
-SALES = ROOT_DIR + "sales.csv"
-
-(products_df, sales_df) = load_raw_data(PRODUCTS, SALES)
-#cleaned_products = clean_products(products_df)
-#print(cleaned_products)
-
-valid_product_ids = ['P' + f"{i:03}" for i in range(0, 1000)]
-cleaned_sales = clean_sales(sales_df, valid_product_ids)
-print(cleaning_summary(sales_df, cleaned_sales, "sales"))
