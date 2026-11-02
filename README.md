@@ -1,4 +1,4 @@
-# Thabo's Corner Store — Sales Insights System (Starter Code)
+# Thabo's Corner Store — Sales Insights System 
 
 ## Folder structure
 
@@ -59,7 +59,7 @@ Capitalize every row's category starting letter.
 # Inconsistent Date Formats
 Standardize them to a single format (YYYY-MM-DD)
 
-#Duplicate rows
+# Duplicate rows
 Drop them.
 
 # Data cleaning summary
@@ -68,7 +68,7 @@ sales: 71 raw rows -> 43 clean rows (28 removed)
 
 ## security.py
 
-#Refleciton
+# Refleciton
 
 1. Confidentiality - The login gate helps keep sales reports from being viewed by unauthorized users. It checks a password before granting access, and storing a hash instead of the plain-text password avoids keeping the original password directly in the code. This is a basic protection, not a guarantee against every kind of access.
 
